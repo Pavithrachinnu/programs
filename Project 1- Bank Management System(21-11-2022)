@@ -1,0 +1,128 @@
+import java.util.Scanner;
+class Admin{
+    private String accno;
+    private String name;
+    private long balance;
+    Scanner sc=new Scanner(System.in);
+    //method to open an account
+    void openAccount(){
+        System.out.println("Enter the Account Number");
+        accno=sc.next();
+        System.out.println("Enter name: ");
+        name=sc.next();
+        System.out.println("Enter balance: ");
+        balance=sc.nextLong();
+    }
+    //method to display account details
+    void showAccount(){
+        System.out.println(accno+" "+name+" "+balance);
+    }
+    //method to deposit money
+    void deposite(){
+        System.out.println("Enter the amount");
+       long amt=sc.nextLong();
+        balance=balance+amt;
+    }
+    //method to withdraw money
+      void withdraw(){
+              long amt;
+              System.out.println("enter WD amount");
+              amt=sc.nextLong();
+              if(balance>=amt){
+                  balance=balance-amt;}
+                  else
+                  {
+                      System.out.println("Insufficient ");
+                  }
+              }
+             //method tp search an account number
+             boolean search(String acn)
+             {
+                 if(accno.equals(acn))
+                 {
+                     showAccount();
+                     return true;}
+                     return (false);
+             }
+ }             
+public class Bank
+{
+    public static void main(String args[])
+    {
+    Scanner sc=new Scanner(System.in);
+    //create initial account
+    System.out.println("How many customer" );
+    int n=sc.nextInt();
+    Admin C[]=new Admin[n];
+    for(int i=0;i<C.length;i++)//01234
+    {
+        C[i]=new Admin();//C[0],C[1],C[2],C[3],C[4]
+        C[i].openAccount();//a/c no,name,balance
+    }
+//run the loop until 5 is not pressed
+int ch;
+do
+{
+    System.out.println("\nMain menu\n1.Display All\n2.search by accounts\n3.deposit\n4.withdraw\n5.exit");
+    System.out.println("Enter your choice");
+    ch=sc.nextInt();//switch value
+switch(ch){
+    case 1:
+        for(int i=0;i<C.length;i++){
+            C[i].showAccount();
+        }
+        break;
+    case 2:
+            System.out.println("Enter account that you wanna search");
+            String acn=sc.next();
+            boolean found=false;
+            for(int i=0;i<C.length;i++)
+            {
+                found=C[i].search(acn);
+                if(found){
+                    break;
+                }}
+                if(!found){
+                    System.out.println("search is failed if your account is does't exist ");
+                }
+         break;
+    case 3:
+            System.out.println("Enter account that you wanna search");
+            acn=sc.next();
+            found=false;
+            for(int i=0;i<C.length;i++)
+            {
+                found=C[i].search(acn);
+                if(found){
+                    C[i].deposite();
+                    break;
+                }}
+                if(!found){
+                    System.out.println("search is failed if your account is does't exist ");
+                }
+         break;     
+    case 4:
+            System.out.println("Enter account that you wanna search");
+            acn=sc.next();
+            found=false;
+            for(int i=0;i<C.length;i++)
+            {
+                found=C[i].search(acn);
+                if(found){
+                     C[i].withdraw();
+                     break;
+                }}
+                if(!found){
+                    System.out.println("search is failed if your account is does't exist ");
+                }
+         break;
+    case 5:
+        System.out.println("Good bye!");
+        break;
+            }
+
+}while(ch!=5);
+
+}
+}
+
