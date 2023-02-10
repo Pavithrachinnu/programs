@@ -1,0 +1,13 @@
+import java.util.*;
+public class Array
+{
+    public static void main(String args[])
+    {
+       
+      ArrayList dp=new ArrayList();
+        dp.add("Java");
+        dp.add("Python");
+        dp.add("Swift");
+      System.out.println(dp);
+        }
+    }
